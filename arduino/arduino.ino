@@ -2,9 +2,8 @@
 #define GLED_PIN 6 // G
 #define BLED_PIN 4 // B
 #include <Arduino.h>
-int value = 0;
+
 byte ch;
-byte c = '\x01';
 
 void setup() {
   Serial.begin(115200);
