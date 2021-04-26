@@ -7,7 +7,6 @@ from processing import debounce, throttle
 # add user to dialout group
 port = "/dev/ttyS0"
 baudrate = 115200
-cond = 1
 
 with serial.Serial(port, baudrate) as uno:
     time.sleep(0.005)
@@ -18,7 +17,7 @@ with serial.Serial(port, baudrate) as uno:
         uno.write(data)
 
     try:
-        while cond:
+        while True:
             if keyboard.is_pressed('q'):
                 write("Enable blue", b'\x01')
             elif keyboard.is_pressed('e'):
