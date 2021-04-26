@@ -1,6 +1,6 @@
-#define RLED_PIN 2 // B
-#define GLED_PIN 6 // R
-#define BLED_PIN 4 // G
+#define RLED_PIN 2 // R
+#define GLED_PIN 6 // G
+#define BLED_PIN 4 // B
 #include <Arduino.h>
 int value = 0;
 byte ch;
