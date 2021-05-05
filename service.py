@@ -4,10 +4,9 @@ import json
 import serial
 import sys
 import time
-import keyboard 
-
-#mkdir -p /dev/robot/rgb
-#mknod /dev/robot/rgb/rgb1 c 188 1
+import keyboard
+from enums import CommandType 
+from command import Command, CommandEncoder
 
 baudrate = 9600
 
@@ -26,11 +25,8 @@ def interview_contoller(port):
             stopbits=serial.STOPBITS_ONE) as uno:
 
         try:
-            data = {}
-            data["operation"] = "init"
+            data = Command(type=CommandType.Init).toJson()
 
-            data=json.dumps(data)
-            print (data)
             if uno.isOpen():
                 # During reboot sended data is recieved by setup func. 
                 # Delay average 5 sec
@@ -41,9 +37,10 @@ def interview_contoller(port):
                 try:
                     incoming = uno.readline()
                     array = json.loads(incoming.decode("utf-8"))["devices"]
-                    devices = list(map(lambda e: json.loads(e), array))
+                    devices = list(map(lambda e: e, array))
                 except Exception as e:
-                    print (e)
+                    print(e)
+                    uno.close() 
                     pass
             else:
                 print ("opening error")

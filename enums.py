@@ -1,5 +1,10 @@
 from enum import Enum
-class Color(Enum):
-    Red = 1
-    Green = 2
-    Blue = 3
+
+class Color(str, Enum):
+    Red = "r"
+    Green = "g"
+    Blue = "b"
+
+class CommandType(str, Enum):
+    Init = "init"
+    Set = "set"
