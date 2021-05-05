@@ -5,7 +5,7 @@
 An API documentation for BIU-04.
 
 ## Components
-*LED
+* LED
 
 
 ## Templates and tools
