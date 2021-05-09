@@ -8,3 +8,4 @@ class Color(str, Enum):
 class CommandType(str, Enum):
     Init = "init"
     Set = "set"
+    Ping = "ping"
