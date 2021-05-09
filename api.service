@@ -1,0 +1,10 @@
+[Unit]
+Description=BIU04 API Service
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/python /home/txct/api/service.py
+StandardInput=tty-force
+
+[Install]
+WantedBy=multi-user.target
