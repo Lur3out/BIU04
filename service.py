@@ -55,7 +55,8 @@ def create_device(device, controller):
     path = f'/dev/robot/{device["type"]}'
     file = f'{path}/{device["name"]}'
     os.makedirs(path, exist_ok=True)
-    os.symlink(controller, file)
+    if not os.path.exists(file):
+        os.symlink(controller, file)
 
 
 for device in iter(monitor.poll, None):
