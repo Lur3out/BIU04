@@ -1,6 +1,6 @@
-#define RLED_PIN 2 // R
-#define GLED_PIN 6 // G
-#define BLED_PIN 4 // B
+#define RLED_PIN 2 // B
+#define GLED_PIN 6 // R
+#define BLED_PIN 4 // G
 #include <Arduino.h>
 #include <ArduinoJson.h>
 
@@ -60,10 +60,13 @@ void loop() {
         Serial.println("{\"devices\": [{\"type\": \"rgb\", \"name\": \"rgb1\"}]}");
     } else if (doc["type"] == "set"){
       if (doc["device"] == "rgb1" && doc["option"] == "color"){
+        Serial.println("{\"Success\":\"True\"}");
         if (doc["value"] == "r") change(0);
         if (doc["value"] == "g") change(1);
         if (doc["value"] == "b") change(2);
       }
+    } else if (doc["type"] == "ping") {
+        Serial.println("{\"Pong\":\"True\"}");
     } else {
         Serial.println("{\"Success\":\"False\"}");
     }
